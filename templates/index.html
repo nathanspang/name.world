@@ -3,8 +3,8 @@
 {% block content %}
 <div class="container", align='center'>
     <h1>Welcome to name.world!</h1>
-    <a href='/login' class="btn btn-secondary btn-lg" role="button" aria-pressed="True">Log In</a>
-    <a href='/createaccount' class="btn btn-secondary btn-lg" role="button" aria-pressed="True">Create Account</a>
+    <a href="{{ url_for('login') }}" class="btn btn-secondary btn-lg" role="button" aria-pressed="True">Log In</a>
+    <a href="{{ url_for('createaccount') }}" class="btn btn-secondary btn-lg" role="button" aria-pressed="True">Create Account</a>
 </div>
 {% endblock%}
 

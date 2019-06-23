@@ -14,5 +14,9 @@ def login():
 def createaccount():
     return render_template('createaccount.html')
 
+@app.route('/namegroup')
+def namegroup():
+    return render_template('namegroup.html')
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
