@@ -1,21 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content%}
-
-{% if username and password %}
-    <p>Hello {{username}}!</p>
-{% else %}
-    <p>Log In:</p>
-{% endif %}
-
-<form method="POST">
-    {{ form.hidden_tag() }}
-    {{ form.username.label }} {{ form.username() }}
-    <br>
-    {{ form.password.label }} {{form.password()}}
-    <br>
-    {{ form.submit() }}
-</form>
-
+<div class="container" align="center">   
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.username.label }} {{ form.username() }}
+        <br>
+        {{ form.password.label }} {{form.password()}}
+        <br>
+        {{ form.submit() }}
+    </form>
+</div>
 {% endblock %}
         

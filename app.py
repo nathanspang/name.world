@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, url_for
+from flask import Flask, render_template, session, redirect, url_for, flash
 from forms import LogIn, CreateAccount
 
 app = Flask(__name__)
@@ -17,6 +17,7 @@ def login():
     if form.validate_on_submit():
         session['username'] = form.username.data
         session['password'] = form.password.data
+        flash(f'Thank you, Login Successful!')
         return redirect(url_for('namegroup'))
 
     return render_template('login.html', form=form, username=username, password=password)
@@ -26,6 +27,7 @@ def createaccount():
     first_name = False
     last_name = False
     username = False
+    aboutyou = False
     password = False
     confirm_pass = False
 
@@ -35,12 +37,14 @@ def createaccount():
         session['first_name'] = form.first_name.data
         session['last_name'] = form.last_name.data
         session['username'] = form.username.data
+        session['aboutyou'] = form.aboutyou.data
         session['password'] = form.password.data
         session['confirm_pass'] = form.confirm_pass.data
+        flash(f'Thank you, Account Created! Please Log in to continue: ')
         return redirect(url_for('login'))
 
     return render_template('createaccount.html', form=form, first_name=first_name, 
-    last_name=last_name, username=username, password=password, confirm_pass=confirm_pass)
+    last_name=last_name, username=username, aboutyou=aboutyou, password=password, confirm_pass=confirm_pass)
 
 @app.route('/namegroup')
 def namegroup():
