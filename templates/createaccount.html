@@ -1,5 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content%}
-<h1>Create Account Page</h1>
+{% if first_name and last_name and username and password and confirm_pass %}
+    <p>Thank you {{ first_name }} {{ last_name }}! Account Created</p>
+{% else %}
+    <p>Create Account: </p>
+{% endif %}
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.first_name.label }}{{ form.first_name() }}
+    <br>
+    {{ form.last_name.label }}{{ form.last_name() }}
+    <br>
+    {{ form.username.label }}{{ form.username() }}
+    <br>
+    {{ form.password.label }}{{ form.password() }}
+    <br>
+    {{ form.confirm_pass.label }}{{ form.confirm_pass() }}
+    <br>
+    {{ form.submit() }}
+</form>
+
 {% endblock %}
